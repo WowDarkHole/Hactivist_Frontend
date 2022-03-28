@@ -1,50 +1,22 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import Typewriter from 'typewriter-effect';
+import { Modal } from "react-responsive-modal";
+import { VideoScroll } from "react-video-scroll";
+
+//Styles
 import styles from '../styles/Home.module.css';
+import "react-responsive-modal/styles.css";
+
+//Component
 import Slider from '../components/Carousel';
 import Slider1 from '../components/Carousel2';
-import CustomAccordion from '../components/Accordion';
-import TeamCard from '../components/TeamCard';
-import DateTimeComponent from '../components/DateTime';
-import RoadMapItem from '../components/RoadMapItem';
-
-import Accordion from "../components/Accordion";
 import ServiceCard from "../components/ServiceCard";
 import HoverImage from "../components/HoverImage";
 import Article from "../components/Article";
-import "react-responsive-modal/styles.css";
-import { Modal } from "react-responsive-modal";
-import { accordionData } from "../asset/data/data";
-// import { Accordion } from 'react-bootstrap-accordion';
 
 //Resources
-import logo from '../src/image/TYRANNICALTIGERS_trans.png';
-import Tiger1 from '../src/image/SaberTooth.gif';
-import Tiger2 from '../src/image/Tiger1.png';
-import Background from '../src/image/background.jpg';
-import Background2 from '../src/image/1.png';
-import Characters from '../src/image/Characters.gif'
-import Discord from '../src/image/discord_logo_icon.png';
-import Twitter from '../src/image/social_Twitter.png';
-import Footer from '../src/image/footer.png';
-import LogOut from '../src/image/log-out.svg';
-import Tree1 from '../src/image/tree1.svg';
-import Tree2 from '../src/image/tree2.svg';
-import Cloud from '../src/image/cloud.svg';
-import Tree3 from '../src/image/tree3.svg';
-import Dec_Bar_Left from '../src/image/dec_r_bar.svg';
-import Dec_Bar_Bottom from '../src/image/dec_b_bar.svg';
-import Dec_Bar_Right from '../src/image/dec_bar.svg';
-import Dec_Light from '../src/image/dec_light.svg';
-import Full_Border from '../src/image/full_border.svg';
-import Grand from '../src/image/grand.svg';
-import Discord2 from '../src/image/discord.svg';
-import Twitter2 from '../src/image/twitter.svg';
-import YouTube from '../src/image/youtube.svg';
-import TwitterText from '../src/image/twitter-text-icon.jpg';
-import JoinToDiscord from '../src/image/JoinToDiscord.svg';
-import SeperateBar from '../src/image/seperate_bar.svg';
 import Values from '../src/image/our_values.svg';
 import Service1 from '../src/image/service1.jpeg';
 import Service2 from '../src/image/service2.jpeg';
@@ -59,9 +31,9 @@ import Lastwork3 from '../src/image/lastwork3.jpg';
 import Lastwork4 from '../src/image/lastwork4.jpg';
 import Lastwork5 from '../src/image/lastwork5.jpg';
 import Lastwork6 from '../src/image/lastwork6.jpg';
-import Typewriter from 'typewriter-effect';
 import Gray_Decorator from '../src/image/honecombhero2.svg';
 import CircleGrid from '../src/image/2.webp';
+import Logo from '../src/image/logo.png';
 // import Pixel_BG from '../src/image/pixel_bg.svg';
 export default function Home() {
   const [toggle, setToggle] = useState(false);
@@ -78,19 +50,18 @@ export default function Home() {
   return (
     <div className="mx-auto relative">
       <Head>
-
         <title>METASCALE</title>
         {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" /> */}
       </Head>
-      <nav className="border-gray-200 rounded dark:bg-gray-800 bg-transparent" role="navigation">
+      <nav className="border-gray-200 rounded dark:bg-gray-800 bg-transparent sticky" role="navigation">
         {/* <div className="bg-[#003949] h-16"></div> */}
         <div className="flex flex-wrap justify-between lg:justify-around items-center mx-auto my-5">
           <a href="#" className="flex">
             <div className="text-5xl font-bold text-[#003949]">
-              {/* <Image src={logo} className="w-auto" /> */}
-              <span>METASCALE</span>
+              <Image src={Logo} className="w-auto" width={100} height={100} />
+              {/* <span>METASCALE</span> */}
             </div>
           </a>
           <div className={`${toggle ? '' : 'hidden'} justify-between items-center w-full md:flex md:w-auto md:order-1`} id="mobile-menu-4">
@@ -126,7 +97,29 @@ export default function Home() {
           </div>
         </div>
       </nav >
-      <div className="section1 text-[#003949] flex justify-center items-center bg-[#f4f4f5] relative overflow-hidden">
+      <div className="w-full z-10 fixed top-0">
+        <div className="wrapper w-full">
+          <VideoScroll
+            playbackRate={200}
+            style={{ position: "sticky", top: "0" }}
+          >
+            <video
+              tabIndex={0}
+              preload="preload"
+              style={{ width: "100%", objectFit: "contain" }}
+              playsInline
+            >
+              <source
+                type="video/mp4"
+                // src={"/bg_video.mp4"}
+                src="https://www.html5rocks.com/tutorials/video/basics/Chrome_ImF.webm"
+              />
+            </video>
+          </VideoScroll>
+        </div>
+      </div>
+      <div className="section1 text-[#003949] flex justify-center items-center bg-transparent relative overflow-hidden">
+
         <div className="grid w-full z-20">
           <div className="col-span-2 text-center md:text-left md:col-span-1 justify-center items-center px-4 md:px-4 lg:px-0 xl:px-16 2xl:px-24">
             <div className="mb-20 grid content-center items-center">
@@ -161,7 +154,7 @@ export default function Home() {
         </div>
 
       </div >
-      <div className="grid xl:grid-cols-7 grid-cols-10 gap-8 bg-white py-20 relative items-center z-30">
+      <div className="grid xl:grid-cols-7 grid-cols-10 gap-8 bg-transparent py-20 relative items-center z-30">
         <div className="p-6 col-span-10 text-center">
           <span className="text-6xl font-bold text-[#003949]">Your Growth, our Focus.</span>
         </div>
@@ -181,7 +174,7 @@ export default function Home() {
           <Image src={Gray_Decorator} />
         </div>
       </div>
-      <div className="grid justify-items-center bg-[#f4f4f5] relative z-40 overflow-hidden">
+      <div className="grid justify-items-center bg-transparent relative z-40 overflow-hidden">
         <div className="p-6">
           <span className="text-6xl font-bold text-[#003949]">OUR VALUES</span>
         </div>
@@ -247,7 +240,7 @@ export default function Home() {
         <div className="col-span-2 md:col-span-1 flex justify-center md:justify-end p-10">
           <div className="w-2/3 relative">
             <div>
-              <Image src={Characters} className="w-full" />
+              {/* <Image src={Characters} className="w-full" /> */}
             </div>
           </div>
         </div>
@@ -283,59 +276,59 @@ export default function Home() {
             <div className="text-center">
               <span className="text-white font-bold text-3xl">Contact us.</span>
             </div>
-            <div class="relative z-0 mb-6 w-full group">
-              <input type="email" name="floating_email" class="block py-2.5 px-0 w-full text-sm text-white-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="" />
-              <label for="floating_email" class="absolute text-sm text-grey-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+            <div className="relative z-0 mb-6 w-full group">
+              <input type="email" name="floating_email" className="block py-2.5 px-0 w-full text-sm text-white-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="" />
+              <label htmlFor="floating_email" className="absolute text-sm text-grey-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
             </div>
-            <div class="relative z-0 mb-6 w-full group">
-              <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="" />
-              <label for="floating_first_name" class="absolute text-sm text-grey-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
+            <div className="relative z-0 mb-6 w-full group">
+              <input type="text" name="floating_first_name" id="floating_first_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="" />
+              <label htmlFor="floating_first_name" className="absolute text-sm text-grey-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
             </div>
             <fieldset>
-              <legend class="sr-only">Checkbox variants</legend>
+              <legend className="sr-only">Checkbox variants</legend>
 
-              <div class="flex items-center mb-4">
-                <input id="checkbox-1" aria-describedby="checkbox-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" checked />
-                <label for="checkbox-1" class="ml-3 text-sm font-medium text-white-900 dark:text-gray-300">I agree to the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a></label>
+              <div className="flex items-center mb-4">
+                <input id="checkbox-1" aria-describedby="checkbox-1" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" checked />
+                <label htmlFor="checkbox-1" className="ml-3 text-sm font-medium text-white-900 dark:text-gray-300">I agree to the <a href="#" className="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a></label>
               </div>
 
-              <div class="flex items-center mb-4 ">
-                <input id="checkbox-2" aria-describedby="checkbox-2" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 accent-transparent rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                <label for="checkbox-2" class="ml-3 text-sm font-medium text-white-900 dark:text-gray-300">I want to get promotional offers</label>
+              <div className="flex items-center mb-4 ">
+                <input id="checkbox-2" aria-describedby="checkbox-2" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 accent-transparent rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                <label htmlFor="checkbox-2" className="ml-3 text-sm font-medium text-white-900 dark:text-gray-300">I want to get promotional offers</label>
               </div>
 
-              <div class="flex items-center mb-4">
-                <input id="checkbox-3" aria-describedby="checkbox-3" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                <label for="checkbox-3" class="ml-3 text-sm font-medium text-white-900 dark:text-gray-300">I am 18 years or older</label>
+              <div className="flex items-center mb-4">
+                <input id="checkbox-3" aria-describedby="checkbox-3" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                <label htmlFor="checkbox-3" className="ml-3 text-sm font-medium text-white-900 dark:text-gray-300">I am 18 years or older</label>
               </div>
 
-              <div class="flex mb-4">
-                <div class="flex items-center h-5">
-                  <input id="shipping-2" aria-describedby="shipping-2" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+              <div className="flex mb-4">
+                <div className="flex items-center h-5">
+                  <input id="shipping-2" aria-describedby="shipping-2" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                 </div>
-                <div class="ml-3 text-sm">
-                  <label for="shipping-2" class="font-medium text-white-900 dark:text-gray-300">Free shipping via Flowbite</label>
+                <div className="ml-3 text-sm">
+                  <label htmlFor="shipping-2" className="font-medium text-white-900 dark:text-gray-300">Free shipping via Flowbite</label>
                 </div>
               </div>
             </fieldset>
-            <div class="relative z-0 mb-6 w-full group">
-              <label for="countries" class="block mb-2 text-sm font-medium text-white-900 dark:text-gray-400">Montly Budget</label>
-              <select id="countries" class="bg-gray-50 opacity border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <div className="relative z-0 mb-6 w-full group">
+              <label htmlFor="countries" className="block mb-2 text-sm font-medium text-white-900 dark:text-gray-400">Montly Budget</label>
+              <select id="countries" className="bg-gray-50 opacity border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option>$1000</option>
                 <option>$4000</option>
                 <option>$3000</option>
                 <option>$2000</option>
               </select>
             </div>
-            <div class="relative z-0 mb-6 w-full group">
-              <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="" />
-              <label for="floating_phone" class="absolute text-sm text-white-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number (123-456-7890)</label>
+            <div className="relative z-0 mb-6 w-full group">
+              <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="" />
+              <label htmlFor="floating_phone" className="absolute text-sm text-white-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number (123-456-7890)</label>
             </div>
-            <div class="relative z-0 mb-6 w-full group">
-              <input type="text" name="floating_company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="" />
-              <label for="floating_company" class="absolute text-sm text-white-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company (Ex. Google)</label>
+            <div className="relative z-0 mb-6 w-full group">
+              <input type="text" name="floating_company" id="floating_company" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="" />
+              <label htmlFor="floating_company" className="absolute text-sm text-white-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company (Ex. Google)</label>
             </div>
-            <button type="submit" class="text-blue-600 bg-white hover:bg-blue-100 focus:ring-4 focus:ring-blue-300 rounded-3xl text-sm font-bold w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 px-10">Send</button>
+            <button type="submit" className="text-blue-600 bg-white hover:bg-blue-100 focus:ring-4 focus:ring-blue-300 rounded-3xl text-sm font-bold w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 px-10">Send</button>
           </form>
 
         </div>
@@ -353,7 +346,7 @@ export default function Home() {
           <Article img={Lastwork2} title="TITRE" />
         </div>
         <div className="grid justify-center">
-          <button class="bg-[#003949] hover:bg-[#005949] text-white font-bold py-6 px-8 rounded-full text-5xl">
+          <button className="bg-[#003949] hover:bg-[#005949] text-white font-bold py-6 px-8 rounded-full text-5xl">
             SEE ALL
           </button>
         </div>
